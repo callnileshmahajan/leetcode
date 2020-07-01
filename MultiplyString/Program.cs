@@ -71,7 +71,6 @@ namespace MultiplyString
             int digitIndex = additionResult.Length - 1;
             int carryForward = 0;
             int sum = 0;
-            int i = 0;
 
             for (int index = results[0].Length - 1; index >= 0; index--)
             {

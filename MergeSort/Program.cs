@@ -11,10 +11,50 @@ namespace MergeSort
         static void Main(string[] args)
         {
             int[] numbers = new int[] { 9, 3, 7, 5, 6, 4, 8 };
-            MergeSort(numbers, 0, numbers.Length - 1);
+            MergeSort(numbers);
             Console.Read();
         }
 
+        /// <summary>
+        /// This implementation is not working. Tried to use the same array.
+        /// </summary>
+        /// <param name="nums"></param>
+        public static void MergeSort(int[] nums)
+        {
+            MergeSortHelper(nums, 0, nums.Length - 1);
+        }
+
+        private static void MergeSortHelper(int[] nums, int low, int high)
+        {
+            if (low == high) // Single element;
+                return;
+
+            int mid = low + (high - low) / 2;
+            MergeSortHelper(nums, low, mid);
+            MergeSortHelper(nums, mid + 1, high);
+
+            int i  = low;
+            int j = (high - mid);
+
+            while (i <= mid)
+            {
+                while (j <= high)
+                {
+                    if (nums[i] > nums[i + j])
+                    {
+                        int temp = nums[i];
+                        nums[i] = nums[i + mid + 1];
+                        nums[i + mid + 1] = temp;
+                    }
+
+                    j++;
+                }
+
+                i++;                
+            }
+        }
+
+        #region Earlier Implementation
         private static void MergeSort(int[] numbers, int leftIndex, int rightIndex)
         {
             int arrayLength = numbers.Length;
@@ -28,7 +68,7 @@ namespace MergeSort
             Array.ConstrainedCopy(numbers, 0, subArray1, 0, mid);
 
             int[] subArray2 = new int[arrayLength - mid];
-            Array.ConstrainedCopy(numbers,  mid,subArray2, 0, arrayLength - mid);
+            Array.ConstrainedCopy(numbers, mid, subArray2, 0, arrayLength - mid);
 
             MergeSort(subArray1, leftIndex, mid);
             MergeSort(subArray2, mid + 1, rightIndex);
@@ -75,6 +115,7 @@ namespace MergeSort
             Array.Copy(tempArray, numbers, tempArray.Length);
 
         }
+        #endregion
     }
 }
 

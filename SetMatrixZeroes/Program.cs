@@ -52,7 +52,7 @@ namespace SetMatrixZeroes
                     var key = string.Concat(i, ',', j);
                     if (markedCells.Contains(key))
                         continue;
- 
+
                     if (matrix[i][j] == 0)
                     {
                         MarkCells(ref matrix, markedCells, i, j, rows, cols);
@@ -277,5 +277,55 @@ namespace SetMatrixZeroes
         //        MarkCenterCells(ref matrix, markedCells, i, j, rows, cols);
         //    }
         //}
+
+        //public void SetZeroes(int[][] matrix)
+        //{
+        //    int rows = matrix.GetLength(0);
+        //    int cols = matrix[0].Length;
+
+        //    // Keep track of which cells have been marked.
+        //    HashSet<string> markedCells = new HashSet<string>();
+
+        //    for (int i = 0; i < rows; i++)
+        //    {
+        //        for (int j = 0; j < cols; j++)
+        //        {
+        //            var key = string.Concat(i, ',', j);
+        //            if (markedCells.Contains(key))
+        //                continue;
+
+        //            if (matrix[i][j] == 0)
+        //            {
+        //                MarkCells(ref matrix, markedCells, i, j, rows, cols);
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        //private static void MarkCells(ref int[][] matrix, HashSet<string> markedCells, int i, int j, int rows, int cols)
+        //{
+        //    for (int m = 0; m < cols; m++) // marking the remaing cols.
+        //    {
+        //        if (matrix[i][m] != 0 && !markedCells.Contains(string.Concat(i, ',', m)))
+        //        {
+        //            matrix[i][m] = 0;
+        //            if (m != j) // same col should not be marked.
+        //                markedCells.Add(string.Concat(i, ',', m));
+        //        }
+        //    }
+
+        //    for (int m = 0; m < rows; m++) // mark row downwords.
+        //    {
+        //        if (matrix[m][j] != 0 && !markedCells.Contains(string.Concat(m, ',', j)))
+        //        {
+        //            matrix[m][j] = 0;
+        //            if (m != i)
+        //                markedCells.Add(string.Concat(m, ',', j));
+        //        }
+        //    }
+
+        //}
     }
 }
+

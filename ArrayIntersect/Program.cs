@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArrayIntersect
 {
@@ -65,7 +63,7 @@ namespace ArrayIntersect
                 pNums2 = nums1.OrderBy(n => n).ToArray();
             }
 
-             int matchFoundIndex = -1;
+            int matchFoundIndex = -1;
             // Avoid same mapping
             List<int> mappedX = new List<int>();
 
@@ -94,7 +92,7 @@ namespace ArrayIntersect
 
                         if (y == pNums2.Length) break;
 
-                        x = matchFoundIndex + 1;                        
+                        x = matchFoundIndex + 1;
                     }
                 }
             }

@@ -31,7 +31,6 @@ namespace ThreeSome
                 resultSet.Add(tempList);
                 return resultSet;
             }
-
             int lastIndex;
             int firstIndex;
             int sum;
@@ -61,14 +60,17 @@ namespace ThreeSome
                         {
                             dicResult.Add(key, tempList);
                         }
-
                         lastIndex--;
                         firstIndex++;
                     }
                     else if (sum < 0)
+                    {
                         firstIndex++;
+                    }
                     else if (sum > 0)
+                    {
                         lastIndex--;
+                    }
                 }
             }
 
@@ -79,6 +81,70 @@ namespace ThreeSome
 
             return resultSet;
         }
+
+        //public static IList<IList<int>> ThreeSum(int[] nums)
+        //{
+        //    var resultSet = new List<IList<int>>();
+        //    Dictionary<string, List<int>> dicResult = new Dictionary<string, List<int>>();
+        //    nums = nums.OrderBy(n => n).ToArray();
+
+        //    if (nums.Length == 0) return resultSet;
+        //    if (nums.Length <= 2 && nums[0] == 0) return resultSet;
+        //    if (nums[0] > 0) return resultSet;
+        //    if (nums[0] == 0 && nums[nums.Length - 1] == 0)
+        //    {
+        //        var tempList = new List<int> { 0, 0, 0 };
+        //        resultSet.Add(tempList);
+        //        return resultSet;
+        //    }
+
+        //    int lastIndex;
+        //    int firstIndex;
+        //    int sum;
+
+        //    for (int numIndex = 0; numIndex < nums.Length; numIndex++)
+        //    {
+        //        lastIndex = nums.Length - 1;
+        //        firstIndex = numIndex + 1;
+        //        while (lastIndex > firstIndex)
+        //        {
+        //            sum = nums[numIndex] + nums[firstIndex] + nums[lastIndex];
+
+        //            if (sum == 0)
+        //            {
+        //                var tempList = new List<int>
+        //                    {
+        //                    nums[numIndex],
+        //                    nums[firstIndex],
+        //                    nums[lastIndex]
+        //                    };
+
+        //                tempList.Sort();
+
+        //                var key = string.Concat(tempList[0], ',', tempList[1], ',', tempList[2]);
+
+        //                if (!dicResult.ContainsKey(string.Concat(key)))
+        //                {
+        //                    dicResult.Add(key, tempList);
+        //                }
+
+        //                lastIndex--;
+        //                firstIndex++;
+        //            }
+        //            else if (sum < 0)
+        //                firstIndex++;
+        //            else if (sum > 0)
+        //                lastIndex--;
+        //        }
+        //    }
+
+        //    foreach (var key in dicResult.Keys)
+        //    {
+        //        resultSet.Add(dicResult[key]);
+        //    }
+
+        //    return resultSet;
+        //}
 
         // Time limit exceeded
         //public static IList<IList<int>> ThreeSum(int[] nums)

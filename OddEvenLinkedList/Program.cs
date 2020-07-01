@@ -15,14 +15,18 @@ namespace OddEvenLinkedList
             head.next.next = new ListNode(3);
             head.next.next.next = new ListNode(4);
             head.next.next.next.next = new ListNode(5);
-            head.next.next.next.next.next = null;
-            //head.next.next.next.next.next = new ListNode(6);
-            //head.next.next.next.next.next.next = null;
+           // head.next.next.next.next.next = new ListNode(6);
+            head.next.next.next.next.next= null;
 
             var result = OddEvenList(head);
             Console.Read();
         }
 
+        /// <summary>
+        /// Current solution is a recursive solution where first we reach to second last odd node and swap it with last even node.
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public static ListNode OddEvenList(ListNode head)
         {
             int moveCounter = 1;

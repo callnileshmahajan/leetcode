@@ -37,44 +37,56 @@ namespace ConvertBST
             Console.Read();
         }
 
+
         public static TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
         {
-            var pathToFirstNode = PathToGivenNode(root, p);
-            var pathToSecondNode = PathToGivenNode(root, q);
-
-            int index = 0;
-
-            while (index < pathToFirstNode.Count && index < pathToSecondNode.Count && pathToFirstNode[index].val == pathToSecondNode[index].val)
-            {
-                index++;
-            }
-
-            index--;
-            return pathToFirstNode[index];
+            if (root.val > p.val && root.val > q.val)
+                return LowestCommonAncestor(root.left, p, q);
+            else if (root.val < p.val && root.val < q.val)
+                return LowestCommonAncestor(root.right, p, q);
+            else
+                return root;
         }
-        
-        private static List<TreeNode> PathToGivenNode(TreeNode root, TreeNode p)
-        {
-            List<TreeNode> treeNodes = new List<TreeNode>();
 
-            while (root.val != p.val)
-            {
-                treeNodes.Add(root);
-                if (p.val < root.val) // left Subtree
-                {                    
-                    root = root.left;
-                }
-                else
-                {
-                    root = root.right;
-                }
-            }
 
-            if (root.val == p.val)
-                treeNodes.Add(root);
+        //public static TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
+        //{
+        //    var pathToFirstNode = PathToGivenNode(root, p);
+        //    var pathToSecondNode = PathToGivenNode(root, q);
 
-            return treeNodes;
-        }
+        //    int index = 0;
+
+        //    while (index < pathToFirstNode.Count && index < pathToSecondNode.Count && pathToFirstNode[index].val == pathToSecondNode[index].val)
+        //    {
+        //        index++;
+        //    }
+
+        //    index--;
+        //    return pathToFirstNode[index];
+        //}
+
+        //private static List<TreeNode> PathToGivenNode(TreeNode root, TreeNode p)
+        //{
+        //    List<TreeNode> treeNodes = new List<TreeNode>();
+
+        //    while (root.val != p.val)
+        //    {
+        //        treeNodes.Add(root);
+        //        if (p.val < root.val) // left Subtree
+        //        {                    
+        //            root = root.left;
+        //        }
+        //        else
+        //        {
+        //            root = root.right;
+        //        }
+        //    }
+
+        //    if (root.val == p.val)
+        //        treeNodes.Add(root);
+
+        //    return treeNodes;
+        //}
     }
 
     public class TreeNode
